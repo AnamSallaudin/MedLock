@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Medical Records System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Secure Medical Records System</h2>
+
+    <!-- Form to Add New Patient -->
+    <h3>Add New Patient</h3>
+    <form id="addPatientForm">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="name" required>
+
+        <label for="patientAge">Patient Age:</label>
+        <input type="number" id="patientAge" name="age" required>
+
+        <label for="medicalHistory">Medical History:</label>
+        <textarea id="medicalHistory" name="medicalHistory" required></textarea>
+
+        <button type="submit">Add Patient</button>
+    </form>
+
+    <!-- Form to Transfer Medical Record -->
+    <h3>Transfer Medical Record</h3>
+    <form id="transferRecordForm">
+        <label for="patientId">Patient ID:</label>
+        <input type="text" id="patientId" name="patientId" required>
+
+        <label for="medicalData">Medical Data (to be encrypted):</label>
+        <textarea id="medicalData" name="data" required></textarea>
+
+        <label for="destination">Destination (Hospital/Diagnostic Center):</label>
+        <select id="destination" name="destination" required>
+            <option value="CityGeneralHospital">City General Hospital</option>
+            <option value="CityDiagnosticCenter">City Diagnostic Center</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <button type="submit">Transfer Record</button>
+    </form>
+
+    <!-- Form to View Transfer Status -->
+    <h3>View Data Transfer Status</h3>
+    <form id="viewTransferForm">
+        <label for="transferId">Transfer ID:</label>
+        <input type="text" id="transferId" name="transferId" required>
+
+        <button type="submit">View Status</button>
+    </form>
+
+    <!-- Status Section -->
+    <h3>Transfer Status</h3>
+    <div id="statusSection"></div>
+</div>
+
+<script>
+    // Add Patient Form Submission
+    document.getElementById('addPatientForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const name = document.getElementById('patientName').value;
+        const age = document.getElementById('patientAge').value;
+        const medicalHistory = document.getElementById('medicalHistory').value;
+
+        const response = await fetch('/patients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, age, medicalHistory }),
+        });
+
+        if (response.ok) {
+            alert('Patient added successfully');
+        } else {
+            alert('Error adding patient');
+        }
+    });
+
+    // Transfer Record Form Submission
+    document.getElementById('transferRecordForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const patientId = document.getElementById('patientId').value;
+        const data = document.getElementById('medicalData').value;
+        const destination = document.getElementById('destination').value;
+
+        const response = await fetch('/transfer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ patientId, data, destination }),
+        });
+
+        if (response.ok) {
+            alert('Medical record transferred successfully');
+        } else {
+            alert('Error transferring record');
+        }
+    });
+
+    // View Transfer Status Form Submission
+    document.getElementById('viewTransferForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const transferId = document.getElementById('transferId').value;
+
+        const response = await fetch(`/transfer/${transferId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById('statusSection').innerText = `Status: ${data.status}`;
+        } else {
+            alert('Error retrieving transfer status');
+        }
+    });
+</script>
+
+</body>
+</html>
