@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Transfer Request</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Request Patient Record</h2>
+        <form id="requestForm">
+            <label for="doctorId">Doctor ID:</label>
+            <input type="text" id="doctorId" name="doctorId" required>
+
+            <label for="patientId">Patient ID:</label>
+            <input type="text" id="patientId" name="patientId" required>
+
+            <label for="privateKey">Private Key File:</label>
+            <input type="file" id="privateKey" name="privateKey" accept=".pem" required>
+
+            <button type="submit">Request Record</button>
+        </form>
+
+        <p id="statusMessage"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
