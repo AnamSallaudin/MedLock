@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Medical Record Encryption System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            background-color: #007bff;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .dashboard-header {
+            padding: 20px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .dashboard-header h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .card {
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">MedLock</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Medical Records</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Data Transfers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <h1>Welcome to the Medical Record Encryption System</h1>
+        <p>Manage and securely transfer patient medical records</p>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="container content">
+        <div class="row">
+            <!-- Doctor/Provider Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Doctor/Provider Section
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="index.html">View Patient Records</a></li>
+                            <li><a href="#">Send Records to Diagnostic Center</a></li>
+                            <li><a href="#">Update Medical Records</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient Section Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        Patient Section
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="#">View Your Medical Records</a></li>
+                            <li><a href="#">Request Data Transfer</a></li>
+                            <li><a href="#">Update Contact Information</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Section Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        Admin Section
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="#">Manage Users</a></li>
+                            <li><a href="#">Monitor Data Transfers</a></li>
+                            <li><a href="#">System Logs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Transfer Overview Section -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Data Transfer Overview
+                    </div>
+                    <div class="card-body">
+                        <p>Track ongoing and completed data transfers between hospitals, diagnostic centers, and patients.</p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Transfer ID</th>
+                                    <th>Patient ID</th>
+                                    <th>Source</th>
+                                    <th>Destination</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Sample Data - Replace with dynamic content -->
+                                <tr>
+                                    <td>TX12345</td>
+                                    <td>PAT67890</td>
+                                    <td>Hospital A</td>
+                                    <td>Diagnostic Center B</td>
+                                    <td>Completed</td>
+                                    <td>2024-11-09</td>
+                                </tr>
+                                <tr>
+                                    <td>TX12346</td>
+                                    <td>PAT67891</td>
+                                    <td>Hospital B</td>
+                                    <td>Hospital C</td>
+                                    <td>Pending</td>
+                                    <td>2024-11-08</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Medical Record Encryption System - All Rights Reserved</p>
+    </div>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

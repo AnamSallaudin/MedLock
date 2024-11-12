@@ -1,75 +1,30 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Firebase Form</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="box">
-            <div class="form">
-                <h2>Login Form</h2>
-                <form id="userForm">
-                    <div class="inputbox">
-                        <input type="text" id="username" required>
-                        <span>Username</span>
-                    </div>
-                    <div class="inputbox">
-                        <input type="email" id="email" required>
-                        <span>Email</span>
-                    </div>
-                    <div class="inputbox">
-                        <input type="text" id="phone" required>
-                        <span>Phone Number</span>
-                    </div>
-                    <button type="submit" class="sub" id="submit">Submit</button>
-                </form>
-            </div>
-        </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Transfer Request</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Request Patient Record</h2>
+        <form id="requestForm">
+            <label for="doctorId">Doctor ID:</label>
+            <input type="text" id="doctorId" name="doctorId" required>
 
-        <script type="module">
-            // Import the Firebase modules
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-            import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
-  
-            // Your Firebase configuration
-            const firebaseConfig = {
-                apiKey: "AIzaSyB9QK1MjK7pHOb8Z-g_E-ekvgUKdrBcT-8",
-                authDomain: "medenc-d3b84.firebaseapp.com",
-                databaseURL: "https://medenc-d3b84-default-rtdb.firebaseio.com",
-                projectId: "medenc-d3b84",
-                storageBucket: "medenc-d3b84.appspot.com",
-                messagingSenderId: "766286833608",
-                appId: "1:766286833608:web:eaae2c4c6c0fb2365602fd"
-            };
+            <label for="patientId">Patient ID:</label>
+            <input type="text" id="patientId" name="patientId" required>
 
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const db = getDatabase(app);
+            <label for="privateKey">Private Key File:</label>
+            <input type="file" id="privateKey" name="privateKey" accept=".pem" required>
 
-            // Submit event listener
-            document.getElementById("submit").addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent form from submitting normally
+            <button type="submit">Request Record</button>
+        </form>
 
-                // Retrieve values from form inputs
-                const username = document.getElementById("username").value;
-                const email = document.getElementById("email").value;
-                const phone = document.getElementById("phone").value;
+        <p id="statusMessage"></p>
+    </div>
 
-                // Write data to Firebase Realtime Database
-                set(ref(db, 'users/' + username), {
-                    username: username,
-                    email: email,
-                    phone: phone
-                })
-                .then(() => {
-                    alert("Login Successful!");
-                    window.location.href = "dashboard.html"; // Redirect to dashboard.html
-                })
-                .catch((error) => {
-                    console.error("Error writing to database: ", error);
-                    alert("Error: " + error.message);
-                });
-            });
-        </script>
-    </body>
+    <script src="script.js"></script>
+</body>
 </html>

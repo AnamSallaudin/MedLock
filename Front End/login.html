@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Medical Record Encryption System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            margin-top: 100px;
+        }
+        .card {
+            padding: 20px;
+        }
+        .card-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .btn-block {
+            margin-top: 10px;
+        }
+        .new-user {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2 class="card-title">Login to Your Account</h2>
+                    <hr>
+                    <form id="loginForm">
+                        <!-- Username -->
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        </div>
+
+                        <!-- Role Selection -->
+                        <div class="form-group">
+                            <label for="role">Login as</label>
+                            <select class="form-control" id="role" required>
+                                <option value="" disabled selected>Select your role</option>
+                                <option value="doctor">Doctor/Provider</option>
+                                <option value="patient">Patient</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <!-- Login Button -->
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+
+                    <!-- New User Registration Links -->
+                    <div class="new-user">
+                        <p>New to the system? <a href="#">Register as a Doctor/Provider</a> | <a href="#">Register as a Patient</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+
+            // Check if all fields are filled
+            if(username && password && role) {
+                // Redirect to the second page (replace 'dashboard.html' with your actual second page)
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+    </script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+    
+            // Check if all fields are filled
+            if (username && password && role) {
+                // Redirect to dashboard.html after successful login
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+    </script>
+    
+</body>
+</html>
